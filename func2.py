@@ -108,10 +108,11 @@ def average(lis):
     return sum/len(lis)
 print(average(movies))
 # 5
-# def cateaverg(category):
-#     li2= []
-#     for k in movies:
-#         if k['name'] in category(category):
-#             li2.append(k)
-#     return average(li2)
-# print(cateaverg("Thriller"))
+def cateaverg(category):
+    li2=[]
+    sum=0
+    for i in movies:
+        if i['category'] == category:
+            sum+=i['imdb']
+    return sum/len(movies)
+print(cateaverg("Thriller"))
