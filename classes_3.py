@@ -17,14 +17,13 @@ class point:
         d = math.sqrt(pow((self.x - x),2) + pow((self.y - y),2))
         print(d)
 
-# p = point()
-# p.show()
+p = point()
+p.show()
 
-# p.move(7 , 8)
+p.move(7 , 8)
 
-# k = point(1 , 1)
+k = point(1 , 1)
+k.show()
+p.show()
 
-# k.show()
-# p.show()
-
-# p.dist(5,9)
+p.dist(5,9)
