@@ -3,49 +3,36 @@ import pygame
 
 pygame.init()
 
-#screen size
-screen_width = 600
-screen_height = 400
-
+screen_width, screen_height = 500, 500
 screen = pygame.display.set_mode((screen_width, screen_height))
 
-circle_radius = 25
-circle_x = (screen_width - circle_radius) // 2
-circle_y = (screen_height - circle_radius) // 2
+#Set up the ball
+ball_radius = 25
+ball_pos = [screen_width//2, screen_height//2]
+ball_speed = 20
+ball_color = (255, 0, 0)
 
-white = (255, 255, 255)
-red = (255, 0, 0)
-
-def draw_circle(x, y):
-    pygame.draw.circle(screen, red, (x, y), circle_radius)
-    
-# main game loop
+#Game loop
 running = True
 while running:
-    # events
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                circle_y -= 20
+                ball_pos[1] = max(ball_pos[1]-ball_speed, ball_radius)
             elif event.key == pygame.K_DOWN:
-                circle_y += 20
+                ball_pos[1] = min(ball_pos[1]+ball_speed, screen_height-ball_radius)
             elif event.key == pygame.K_LEFT:
-                circle_x -= 20
+                ball_pos[0] = max(ball_pos[0]-ball_speed, ball_radius)
             elif event.key == pygame.K_RIGHT:
-                circle_x += 20
-    # keep the ball within the screen bounds
-    circle_x = max(circle_x, circle_radius)
-    circle_y = max(circle_y, circle_radius)
-    circle_x = min(circle_x, screen_width - circle_radius)
-    circle_y = min(circle_y, screen_height - circle_radius)
-    # clear the screen
-    screen.fill(white)
+                ball_pos[0] = min(ball_pos[0]+ball_speed, screen_width-ball_radius)
 
-    # draw the circle
-    draw_circle(circle_x, circle_y)
-    # update the screen
-    pygame.display.update()
-# quit Pygame
+#Clear the screen
+    screen.fill((255, 255, 255))
+    pygame.draw.circle(screen, ball_color, ball_pos, ball_radius)
+
+    pygame.display.flip()
 pygame.quit()
