@@ -64,7 +64,6 @@ def draw_grid():
 class Particle:  # part of every object
     def __init__(self, _x=0, _y=0, color=(0, 0, 0), _block_size=BLOCK_SIZE):
         #simple food is smaller than simple block
-        super().__init__()
         self.block_size = _block_size
         self.x = _x
         self.y = _y
@@ -196,7 +195,7 @@ def over_the_game():  # game over screen
     SCREEN.blit(font_small.render(f'Score: {SCORE}', True, WHITE), (32, 250))
     SCREEN.blit(font_small.render(f'Level: {LEVEL}', True, WHITE), (32, 275))
     pygame.display.update()
-    time.sleep(6)
+    time.sleep(3)
     game_over = True
 
 

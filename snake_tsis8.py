@@ -3,33 +3,32 @@ import datetime
 import pygame
 import random
 
-pygame.init()  # initialization
+pygame.init() 
 CLOCK = pygame.time.Clock()
-FPS = 8  # speed of the game
-WINDOW_WIDTH, WINDOW_HEIGHT = 480, 440  # program window size
-SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT+80)) #  create window
+FPS = 8  
+WINDOW_WIDTH, WINDOW_HEIGHT = 480, 440  
+SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT+80)) 
 WHITE = (255, 255, 255)   #colors
 BLACK = (0, 0, 0)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
-BLOCK_SIZE = 20  #the size of block (square)
+BLOCK_SIZE = 20 
 
-font = pygame.font.SysFont('Verdana', 63, bold=True)  # big font
-font_small = pygame.font.SysFont('Verdana', 18)  # small font
+font = pygame.font.SysFont('Verdana', 63, bold=True)
+font_small = pygame.font.SysFont('Verdana', 18) 
 
-SCORE = 0   # score
-LEVEL = 0   # level
+SCORE = 0   
+LEVEL = 0   
 
-pygame.display.set_caption('uSnake')  # name of window
+pygame.display.set_caption('uSnake')  
 
-POSITIONS_OF_THE_WALL = ('top', 'left', 'bottom', 'right')  # tuple of wall positions
+POSITIONS_OF_THE_WALL = ('top', 'left', 'bottom', 'right')  
 
 
-def check_food_collision() -> bool:  # food should lay on wall or snake
+def check_food_collision() -> bool: 
     global food, walls, snake
-
     for wa in walls:
         for p in wa.construction:
             if food.collide(p):
@@ -46,11 +45,11 @@ def generate_random_color() -> tuple:   # all item will be coloured randomly
     return random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
 
 
-def own_round(value, base=BLOCK_SIZE):   # rounding the coordinates for following the grid
+def own_round(value, base=BLOCK_SIZE):  
     return base * round(value / BLOCK_SIZE)
 
 
-def draw_grid():   # draw grid
+def draw_grid():  
     for i in range(0, WINDOW_WIDTH, BLOCK_SIZE):
         for j in range(0, WINDOW_HEIGHT+20, BLOCK_SIZE):
             pygame.draw.rect(SCREEN, pygame.Color('grey'), (i, j, BLOCK_SIZE, BLOCK_SIZE), 1)
