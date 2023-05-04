@@ -3,6 +3,8 @@ import re
 import csv
 params=psycopg2.connect(dbname='postgres', user='postgres', password='Ainurik501892', host='localhost')
 current = params.cursor()
+
+
 update_type = input("what you want to update?(name or number):")
 if update_type == "name":
     name = input("name in phonebook:")

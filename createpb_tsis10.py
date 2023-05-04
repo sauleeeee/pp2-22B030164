@@ -9,11 +9,11 @@ create_table = '''
     );
 '''
 
-current.execute(create_table)
-delete_raw = '''
-    DELETE FROM PhoneBook WHERE name = %s;
-'''
-current.execute(delete_raw,('Eer',))
+# current.execute(create_table)
+# delete_raw = '''
+#     DELETE FROM PhoneBook WHERE name = %s;
+# '''
+# current.execute(delete_raw,('Eer',))
 current.close()
 params.commit()
 params.close()
